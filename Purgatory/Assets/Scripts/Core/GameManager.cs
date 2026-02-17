@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Survivor.Combat;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Survivor.Core
@@ -19,6 +20,9 @@ namespace Survivor.Core
 
         public UnityEvent<GameState> OnGameStateChanged = new UnityEvent<GameState>();
 
+        [SerializeField] private UnityEvent onPlayerWin;
+        [SerializeField] private UnityEvent onPlayerLose;
+
         private void Awake()
         {
             if (Instance != null)
@@ -32,6 +36,35 @@ namespace Survivor.Core
             Instance = this;
 
             CurrentState = GameState.NotStarted;
+        }
+        private void Start()
+        {
+            if (EnemyManager.Instance != null)
+            {
+                EnemyManager.Instance.OnAllEnemiesDefeated.AddListener(OnVictory);
+            }
+        }
+
+        private void OnVictory()
+        {
+            if (CurrentState != GameState.Playing)
+                return;
+
+            Debug.Log("VICTORY!");
+
+            SetState(GameState.Victory);
+            onPlayerWin?.Invoke();
+        }
+
+        public void OnDefeat()
+        {
+            if (CurrentState != GameState.Playing)
+                return;
+
+            Debug.Log("DEFEAT!");
+
+            SetState(GameState.Defeat);
+            onPlayerLose?.Invoke();
         }
 
 

@@ -19,7 +19,8 @@ namespace Survivor.Combat
 
         private Animator animator;
 
-        private static readonly int DieHash = Animator.StringToHash("Die");
+        private static readonly int IsDeadHash = Animator.StringToHash("isDead");
+
 
         private void Awake()
         {
@@ -73,7 +74,11 @@ namespace Survivor.Combat
 
             isDead = true;
 
-            animator?.SetTrigger(DieHash);
+            if (animator != null)
+            {
+                animator.SetBool(IsDeadHash, true);
+            }
+
             onDie?.Invoke();
 
             if (CompareTag("Player"))

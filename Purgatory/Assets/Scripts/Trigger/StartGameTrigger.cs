@@ -1,7 +1,8 @@
-using UnityEngine;
-using System.Collections;
-using Survivor.Core;
 using Cinemachine;
+using Survivor.Core;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Survivor.Trigger
 {
@@ -9,8 +10,12 @@ namespace Survivor.Trigger
     {
         [SerializeField] GameObject healthBar;
         [SerializeField] GameObject initialMessage;
-        [SerializeField] float timer = 0.5f;
+        [SerializeField] float firstTimer = 0.5f;
+        [SerializeField] float secondTimer = 1f;
         [SerializeField] CinemachineFreeLook actionCamera;
+
+        [Header("Events")]
+        [SerializeField] private UnityEvent onStarting;
 
 
         public void TriggerFromAnimation()
@@ -30,9 +35,11 @@ namespace Survivor.Trigger
         private IEnumerator DelayedEnable()
         {
             Debug.Log("Starting delay");
-            yield return new WaitForSeconds(timer);
+            yield return new WaitForSeconds(firstTimer);
             healthBar.SetActive(true);
             actionCamera.Priority = 2;
+            yield return new WaitForSeconds(secondTimer);
+            onStarting?.Invoke();  
         }
     }
 }
