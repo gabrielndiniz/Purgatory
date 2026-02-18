@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Survivor.Combat
@@ -15,6 +16,8 @@ namespace Survivor.Combat
         [SerializeField] private float specialCooldown = 5f;
         [SerializeField] private float specialRadius = 3f;
         [SerializeField] private int specialDamage = 20;
+        [SerializeField] private GameObject specialVfxObject;
+        [SerializeField] private float specialVfxDuration = 2f;
 
         [Header("Targeting")]
         [SerializeField] private string targetTag = "Enemy";
@@ -117,6 +120,7 @@ namespace Survivor.Combat
 
             specialTimer = 0f;
             DoAreaDamage();
+            SpawnSpecialVFX();
         }
 
         private void DoAreaDamage()
@@ -137,5 +141,23 @@ namespace Survivor.Combat
 
             Debug.Log("Special attack triggered");
         }
+        private void SpawnSpecialVFX()
+        {
+            if (specialVfxObject == null)
+                return;
+
+            StopCoroutine(nameof(SpecialVfxRoutine));
+            StartCoroutine(SpecialVfxRoutine());
+        }
+
+        private IEnumerator SpecialVfxRoutine()
+        {
+            specialVfxObject.SetActive(true);
+
+            yield return new WaitForSeconds(specialVfxDuration);
+
+            specialVfxObject.SetActive(false);
+        }
+
     }
 }

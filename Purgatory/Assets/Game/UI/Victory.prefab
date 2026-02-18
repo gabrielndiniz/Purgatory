@@ -162,6 +162,9 @@ GameObject:
   - component: {fileID: 6231254950303017757}
   - component: {fileID: 6452747583543123821}
   - component: {fileID: 3373961137560362307}
+  - component: {fileID: 1649035009554581686}
+  - component: {fileID: 6178749178460144879}
+  - component: {fileID: 6033037014019048410}
   m_Layer: 5
   m_Name: Victory
   m_TagString: Untagged
@@ -253,6 +256,46 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1649035009554581686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7109342643203845664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813e46bdaaa7e5a4097ce1dec3378cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 1
+  fader: {fileID: 6178749178460144879}
+--- !u!114 &6178749178460144879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7109342643203845664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f55b6c6060c5b4eadfbbccba290306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 6033037014019048410}
+  fadeTime: 1
+--- !u!225 &6033037014019048410
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7109342643203845664}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7884867937762305322
 GameObject:
   m_ObjectHideFlags: 0
