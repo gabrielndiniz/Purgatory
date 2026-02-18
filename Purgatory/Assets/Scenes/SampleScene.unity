@@ -411,7 +411,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnAllEnemiesDefeated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1833401706}
+        m_TargetAssemblyTypeName: Survivor.Core.GameManager, Assembly-CSharp
+        m_MethodName: OnVictory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1829926383 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6092945035047572393, guid: 4cc48e9482b4e774b9dc7d0a2e80db94, type: 3}
@@ -432,6 +444,17 @@ MonoBehaviour:
   cameraAction: {fileID: 0}
   activePriority: 20
   inactivePriority: 0
+--- !u!114 &1833401706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2299443684498931206, guid: 4cc48e9482b4e774b9dc7d0a2e80db94, type: 3}
+  m_PrefabInstance: {fileID: 6792640480256917016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6257af67aa9870f4e8c1dfd1c73a3d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Survivor.Core.GameStateController
 --- !u!1 &1977314330 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 146440193886895931, guid: 4cc48e9482b4e774b9dc7d0a2e80db94, type: 3}
@@ -483,6 +506,10 @@ PrefabInstance:
     - target: {fileID: 2766602850330365019, guid: 4cc48e9482b4e774b9dc7d0a2e80db94, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.18810514
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029298166233739133, guid: 4cc48e9482b4e774b9dc7d0a2e80db94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5366023406608066824, guid: 4cc48e9482b4e774b9dc7d0a2e80db94, type: 3}
       propertyPath: onStarting.m_PersistentCalls.m_Calls.Array.size

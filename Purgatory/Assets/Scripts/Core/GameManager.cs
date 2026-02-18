@@ -45,7 +45,7 @@ namespace Survivor.Core
             }
         }
 
-        private void OnVictory()
+        public void OnVictory()
         {
             if (CurrentState != GameState.Playing)
                 return;
