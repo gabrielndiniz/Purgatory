@@ -8,7 +8,7 @@ namespace Survivor.Trigger
 {
     public class StartGameTrigger : BaseTrigger
     {
-        [SerializeField] GameObject healthBar;
+        [SerializeField] GameObject ActionUI;
         [SerializeField] GameObject initialMessage;
         [SerializeField] float firstTimer = 0.5f;
         [SerializeField] float secondTimer = 1f;
@@ -36,7 +36,7 @@ namespace Survivor.Trigger
         {
             Debug.Log("Starting delay");
             yield return new WaitForSeconds(firstTimer);
-            healthBar.SetActive(true);
+            ActionUI.SetActive(true);
             actionCamera.Priority = 2;
             yield return new WaitForSeconds(secondTimer);
             onStarting?.Invoke();  

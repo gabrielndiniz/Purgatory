@@ -159,5 +159,16 @@ namespace Survivor.Combat
             specialVfxObject.SetActive(false);
         }
 
+        public float GetSpecialCooldown()
+        {
+            return specialCooldown;
+        }
+
+        public float GetSpecialTimer()
+        {
+            return specialTimer;
+        }
+
+
     }
 }
