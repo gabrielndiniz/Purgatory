@@ -11,7 +11,7 @@ namespace Survivor.Combat
 
         public UnityEvent OnAllEnemiesDefeated;
 
-        private readonly List<Enemy> enemies = new();
+        private HashSet<Enemy> aliveEnemies = new();
 
         private void Awake()
         {
@@ -26,45 +26,30 @@ namespace Survivor.Combat
 
         public void Register(Enemy enemy)
         {
-            if (!enemies.Contains(enemy))
-            {
-                enemies.Add(enemy);
-                Debug.Log($"Enemy registered. Total: {enemies.Count}");
-            }
+            aliveEnemies.Add(enemy);
+            Debug.Log($"[EnemyManager] Enemy registered. Total: {aliveEnemies.Count}");
         }
 
-        public void Unregister(Enemy enemy)
+        public void NotifyEnemyKilled(Enemy enemy)
         {
-            if (enemies.Remove(enemy))
-            {
-                Debug.Log($"Enemy removed. Remaining: {enemies.Count}");
+            if (!aliveEnemies.Contains(enemy))
+                return;
 
-                if (enemies.Count == 0)
-                {
-                    Debug.Log("All enemies defeated!");
-                    OnAllEnemiesDefeated?.Invoke();
-                }
-            }
+            aliveEnemies.Remove(enemy);
+            Debug.Log($"[EnemyManager] Enemy killed. Remaining: {aliveEnemies.Count}");
+
+            /*if (aliveEnemies.Count == 0)
+            {
+                Debug.Log("[EnemyManager] All enemies defeated!"); //It should work, but it is not working.
+                AllEnemiesDefeated()
+            }*/
         }
 
-        public Transform GetClosestEnemy(Vector3 position, float range)
+        public void AllEnemiesDefeated()
         {
-            Transform closest = null;
-            float minDist = range * range;
-
-            foreach (var e in enemies)
-            {
-                if (e == null) continue;
-
-                float dist = (e.transform.position - position).sqrMagnitude;
-                if (dist < minDist)
-                {
-                    minDist = dist;
-                    closest = e.transform;
-                }
-            }
-
-            return closest;
+            OnAllEnemiesDefeated?.Invoke();
         }
+
+        
     }
 }

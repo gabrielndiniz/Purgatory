@@ -66,10 +66,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nYou died.\r\n\r\nIt does not matter how.\r\nOr why.\r\nOr when.\r\n\r\nSomeone
-    performed a ritual\r\nto send you to a peaceful afterlife.\r\n\r\nSomething went
-    wrong.\r\n\r\nNow you are here.\r\nAnd you must defend yourself.\r\n\r\n\u201CJust
-    do something. Think!\u201D crosses your mind.\r\n\r\nSo rise.\r\nAnd fight.\r\n"
+  m_text: "You died.\r\n\n\rIt does not matter how.\r\nOr why.\r\nOr when.\r\n\rSomeone
+    performed a ritual\r\nto send you to a peaceful afterlife.\r\n\rSomething went
+    wrong.\r\n\rNow you are here.\r\nAnd you must defend yourself.\r\n\r\n\u201CJust
+    do something. Think!\u201D \ncrosses your mind.\r\n\rSo rise.\r\nAnd fight.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -64,7 +64,14 @@ namespace Survivor.Combat
 
             Transform target = GetClosestTarget();
             if (target == null)
-                return;
+            {
+                EnemyManager enemyManager = EnemyManager.Instance;
+                if (enemyManager != null) 
+                {
+                    enemyManager.AllEnemiesDefeated(); //Improvising.
+                }
+                return; 
+            }
 
             attackTimer = 0f;
             Shoot(target.position);

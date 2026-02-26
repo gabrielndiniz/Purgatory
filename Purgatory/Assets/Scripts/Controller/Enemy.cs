@@ -11,15 +11,22 @@ namespace Survivor.Controller
 
         private Transform player;
         private CombatController combat;
-
+        private Health health;
+        private bool isDead = false;
 
         private void OnEnable()
         {
-            if (EnemyManager.Instance != null)
-                EnemyManager.Instance.Register(this);
+            health = GetComponent<Health>();
+            EnemyManager.Instance.Register(this);
+
+            if (health != null)
+                health.OnDie.AddListener(OnDeath);
         }
         private void Start()
         {
+            if(health == null)
+                health = GetComponent<Health>();
+
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
             combat = GetComponent<CombatController>();
 
@@ -63,8 +70,16 @@ namespace Survivor.Controller
 
         private void OnDisable()
         {
-            if (EnemyManager.Instance != null)
-                EnemyManager.Instance.Unregister(this);
+            if (health != null)
+                health.OnDie.RemoveListener(OnDeath);
+        }
+
+        private void OnDeath()
+        {
+            if (isDead) return;
+            isDead = true;
+
+            EnemyManager.Instance.NotifyEnemyKilled(this);
         }
 
 
